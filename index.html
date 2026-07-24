@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Content Studio</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="app-shell" class="acs-shell">
+
+    <!-- Sidebar -->
+    <aside class="acs-sidebar" id="sidebar">
+      <div class="acs-sidebar__brand">
+        <span class="acs-sidebar__logo">🎬</span>
+        <span class="acs-sidebar__title">AI Content Studio</span>
+      </div>
+      <nav class="acs-sidebar__nav" id="sidebar-nav"><!-- populated by app.js --></nav>
+      <div class="acs-sidebar__footer">
+        <div class="acs-storage-meter">
+          <div class="acs-storage-meter__label">Storage</div>
+          <div class="acs-storage-meter__bar"><div class="acs-storage-meter__fill" id="storage-fill"></div></div>
+          <div class="acs-storage-meter__text" id="storage-text">--</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="acs-main">
+
+      <header class="acs-topbar">
+        <button class="acs-icon-btn" id="sidebar-toggle" title="Toggle sidebar">☰</button>
+
+        <div class="acs-breadcrumb">
+          <span>AI Content Studio</span>
+          <span class="acs-breadcrumb__sep">/</span>
+          <span id="breadcrumb-current">Dashboard</span>
+        </div>
+
+        <div class="acs-topbar__search">
+          <input type="text" id="global-search" placeholder="Search stories, characters, scenes..." />
+        </div>
+
+        <div class="acs-topbar__actions">
+          <button class="acs-icon-btn" id="notification-toggle" title="Notifications">
+            🔔<span id="notification-badge" class="acs-badge"></span>
+          </button>
+          <button class="acs-icon-btn" id="settings-shortcut" title="Settings">⚙️</button>
+        </div>
+      </header>
+
+      <main class="acs-view" id="view-root"><!-- active module renders here --></main>
+
+      <footer class="acs-statusbar" id="statusbar">
+        <span id="status-message">Ready.</span>
+        <span class="acs-statusbar__spacer"></span>
+        <span id="status-clock">--:--</span>
+      </footer>
+
+    </div>
+  </div>
+
+  <div id="notification-root" class="acs-notification-root"></div>
+
+  <div id="lock-overlay" style="display:none; position:fixed; inset:0; background:var(--ink-950); z-index:2000; align-items:center; justify-content:center; flex-direction:column; gap:14px;">
+    <div style="font-size:34px;">🔒</div>
+    <div style="font-family:var(--font-display); font-size:16px;">AI Content Studio is locked</div>
+    <input type="password" id="lock-pin-input" placeholder="Enter PIN" style="background:var(--ink-800); border:1px solid var(--ink-700); color:var(--fog-100); border-radius:6px; padding:10px 14px; font-size:13px; width:220px; text-align:center;" />
+    <button class="acs-btn acs-btn--primary" id="lock-unlock-btn">Unlock</button>
+    <div id="lock-error" style="color:var(--danger); font-size:12px; height:16px;"></div>
+  </div>
+
+  <!-- Config & Core -->
+  <script src="config/config.js"></script>
+  <script src="core/storage.js"></script>
+  <script src="core/notifications.js"></script>
+  <script src="core/database.js"></script>
+  <script src="core/router.js"></script>
+  <script src="core/state.js"></script>
+  <script src="core/ai-providers.js"></script>
+  <script src="core/video-engine.js"></script>
+  <script src="core/security.js"></script>
+  <script src="core/backup.js"></script>
+
+  <!-- Modules -->
+  <script src="modules/dashboard.js"></script>
+  <script src="modules/story.js"></script>
+  <script src="modules/character.js"></script>
+  <script src="modules/scene.js"></script>
+  <script src="modules/ai.js"></script>
+  <script src="modules/image.js"></script>
+  <script src="modules/voice.js"></script>
+  <script src="modules/video.js"></script>
+  <script src="modules/render.js"></script>
+  <script src="modules/preview.js"></script>
+  <script src="modules/export.js"></script>
+  <script src="modules/settings.js"></script>
+
+  <!-- App bootstrap -->
+  <script src="app.js"></script>
+</body>
+</html>
